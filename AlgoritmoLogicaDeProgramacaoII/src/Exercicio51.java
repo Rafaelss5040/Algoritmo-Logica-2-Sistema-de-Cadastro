@@ -3,25 +3,38 @@ import java.rmi.registry.LocateRegistry;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 public class Exercicio51 {
 
 	static JFrame janela = new JFrame();
+	static JFrame jCadastro = new JFrame();
 	static JPanel tela = new JPanel();
+	static JPanel telaCad = new JPanel();
+	
 	static JButton botao1 = new JButton("Cadastrar Cliente ");
 	static JButton botao2 = new JButton("atualizar Cliente ");
 	static JButton botao3 = new JButton("Excluir Cliente ");
 	static JButton botao4 = new JButton("Consultar cliente");
+	
+	static JLabel textoNome = new JLabel("Nome");
+	static JTextField escreverNome = new JTextField();
+	static JLabel textoSobrenome = new JLabel("Sobrenome");
+	static JTextField escreverSobrenome = new JTextField();
+	
+	
+	
 
 	public static void main(String[] args) {
 
-		janela();
+		janelaCadastro();
 
 	}
 
-	// imprime uma caixa d edialogo
+	// imprime uma caixa de edialogo
 	static void imprimirMensagem() {
 		JOptionPane.showMessageDialog(tela, "Bem vindo ao Sistema de Cadastro");
 
@@ -58,13 +71,19 @@ static void botao1() {
 		botao1.setLocation(150, 15);
 		botao1.setVisible(true);
 		botao1.setBackground(Color.white);
+		executarBotao1();
 	}
+
+static void executarBotao1 () {
+	
+}
 	
 	static void botao2() {
 		botao2.setSize(170, 50);
 		botao2.setLocation(150, 100);
 		botao2.setVisible(true);
 		botao2.setBackground(Color.white);
+		
 	}
 
 	
@@ -85,9 +104,52 @@ static void botao1() {
 	}
 	
 	
+	
+
+	static void janelaCadastro(){
+		
+		jCadastro.setTitle("Cadastrar Cliente");
+		jCadastro.setSize(550, 615);
+		jCadastro.setLocationRelativeTo(null);
+		jCadastro.setResizable(false);
+		jCadastro.setVisible(true);
+		jCadastro.add(telaCad);
+		telaCadastro();
+	}
+
 	static void telaCadastro(){
+		telaCad.setBackground(Color.LIGHT_GRAY);
+		telaCad.setLayout(null);
+		telaCad.add(textoNome);
+		telaCad.add(escreverNome);
+		telaCad.add(textoSobrenome);
+		telaCad.add(escreverSobrenome);
+		
+		cadastarNome();
+		cadastarSobrenome();
 		
 	}
-	
-	
+
+	static void cadastarNome(){
+		textoNome.setLocation(25, 45);
+		textoNome.setSize(150,10);
+		textoNome.setVisible(true);
+		textoNome.setLayout(null);
+		
+		escreverNome.setLocation(80, 40);
+		escreverNome.setSize(100,25);
+		escreverNome.setVisible(true);
+		
+	}
+
+	static void cadastarSobrenome(){
+		textoSobrenome.setLocation(225, 45);
+		textoSobrenome.setSize(200,10);
+		textoSobrenome.setVisible(true);
+		textoSobrenome.setLayout(null);
+		
+		escreverSobrenome.setLocation(310, 40);
+		escreverSobrenome.setSize(215,25);
+		escreverSobrenome.setVisible(true);
+	}
 }
