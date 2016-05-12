@@ -1,5 +1,6 @@
 import java.awt.Color;
-import java.rmi.registry.LocateRegistry;
+import java.awt.Font;
+import java.nio.channels.SelectableChannel;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -14,29 +15,17 @@ public class Exercicio51 {
 	static JFrame jCadastro = new JFrame();
 	static JPanel tela = new JPanel();
 	static JPanel telaCad = new JPanel();
-	
-	static JButton botao1 = new JButton("Cadastrar Cliente ");
-	static JButton botao2 = new JButton("atualizar Cliente ");
-	static JButton botao3 = new JButton("Excluir Cliente ");
+
+	static JButton botao1 = new JButton("Cadastrar Cliente");
+	static JButton botao2 = new JButton("Atualizar Cliente");
+	static JButton botao3 = new JButton("Excluir Cliente");
 	static JButton botao4 = new JButton("Consultar cliente");
-	
-	static JLabel textoNome = new JLabel("Nome");
-	static JTextField escreverNome = new JTextField();
-	static JLabel textoSobrenome = new JLabel("Sobrenome");
-	static JTextField escreverSobrenome = new JTextField();
-	
-	
-	
+
+	static JButton botaoSalvar = new JButton("Salvar");
+	static JButton botaoCancelar = new JButton("Cancelar");
 
 	public static void main(String[] args) {
-
-		janelaCadastro();
-
-	}
-
-	// imprime uma caixa de edialogo
-	static void imprimirMensagem() {
-		JOptionPane.showMessageDialog(tela, "Bem vindo ao Sistema de Cadastro");
+		janela();
 
 	}
 
@@ -56,60 +45,23 @@ public class Exercicio51 {
 	static void tela() {
 		tela.setBackground(Color.lightGray);
 		tela.setLayout(null);
-		tela.add(botao1);
-		tela.add(botao2);
-		tela.add(botao3);
-		tela.add(botao4);
-		botao1();
-		botao2();
-		botao3();
-		botao4();
-	}
-
-static void botao1() {
-		botao1.setSize(170, 50);
-		botao1.setLocation(150, 15);
-		botao1.setVisible(true);
+		tela.add(botao1).setBounds(150, 15, 170, 50);
 		botao1.setBackground(Color.white);
-		executarBotao1();
-	}
-
-static void executarBotao1 () {
-	
-}
-	
-	static void botao2() {
-		botao2.setSize(170, 50);
-		botao2.setLocation(150, 100);
-		botao2.setVisible(true);
+		tela.add(botao2).setBounds(150, 100, 170, 50);
 		botao2.setBackground(Color.white);
-		
-	}
-
-	
-	static void botao3(){
-		botao3.setSize(170, 50);
-		botao3.setLocation(150, 200);
-		botao3.setVisible(true);
+		tela.add(botao3).setBounds(150, 200, 170, 50);
 		botao3.setBackground(Color.white);
+		tela.add(botao4).setBounds(150, 300, 170, 50);
 
-		
-	}
-	
-	static void botao4(){
-		botao4.setSize(170, 50);
-		botao4.setLocation(150, 300);
-		botao4.setVisible(true);
 		botao4.setBackground(Color.white);
-	}
-	
-	
-	
 
-	static void janelaCadastro(){
-		
+	}
+
+	static void janelaCadastro() {
+
 		jCadastro.setTitle("Cadastrar Cliente");
-		jCadastro.setSize(550, 615);
+		jCadastro.setSize(580, 615);
+		jCadastro.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		jCadastro.setLocationRelativeTo(null);
 		jCadastro.setResizable(false);
 		jCadastro.setVisible(true);
@@ -117,39 +69,52 @@ static void executarBotao1 () {
 		telaCadastro();
 	}
 
-	static void telaCadastro(){
+	static void telaCadastro() {
+		JLabel textoNome = new JLabel("Nome:");
+		JLabel textoSobrenome = new JLabel("Sobrenome:");
+		JLabel textEmail = new JLabel("e-mail:");
+		JLabel texTelefone = new JLabel("Telefone:");
+		JLabel textCelular = new JLabel("Celular:");
+		JLabel textRg = new JLabel("RG:");
+		JLabel textCpf = new JLabel("CPF:");
+		JLabel textDataNasc = new JLabel("Data de nascimento:");
+		JTextField escreverNome = new JTextField();
+		JTextField escreverSobrenome = new JTextField();
+		JTextField escreverEmail = new JTextField();
+
+		JTextField escreverTelefone = new JTextField();
+		JTextField escreverCelular = new JTextField();
+		JTextField escreverRg = new JTextField();
+		JTextField escreverCpf = new JTextField();
+		JTextField escreverDataNasc = new JTextField();
+
 		telaCad.setBackground(Color.LIGHT_GRAY);
 		telaCad.setLayout(null);
-		telaCad.add(textoNome);
-		telaCad.add(escreverNome);
-		telaCad.add(textoSobrenome);
-		telaCad.add(escreverSobrenome);
-		
-		cadastarNome();
-		cadastarSobrenome();
-		
+
+		// dados pessoais
+		telaCad.add(textoNome).setBounds(25, 25, 150, 10);
+		telaCad.add(escreverNome).setBounds(25, 40, 100, 25);
+		telaCad.add(textoSobrenome).setBounds(190, 25, 200, 10);
+		telaCad.add(escreverSobrenome).setBounds(190, 40, 215, 25);
+		telaCad.add(textCpf).setBounds(25, 80, 50, 10);
+		telaCad.add(escreverCpf).setBounds(25, 95, 115, 25);
+		telaCad.add(textRg).setBounds(190, 80, 50, 10);
+		telaCad.add(escreverRg).setBounds(190, 95, 115, 25);
+		telaCad.add(textDataNasc).setBounds(350, 80, 250, 10);
+
+		// dados contato
+		telaCad.add(escreverDataNasc).setBounds(350, 95, 115, 25);
+		telaCad.add(textEmail).setBounds(25, 190, 50, 10);
+		telaCad.add(escreverEmail).setBounds(25, 205, 190, 25);
+		telaCad.add(texTelefone).setBounds(25, 140, 100, 10);
+		telaCad.add(escreverTelefone).setBounds(25, 155, 115, 25);
+		telaCad.add(textCelular).setBounds(350, 140, 150, 10);
+		telaCad.add(escreverCelular).setBounds(350, 155, 115, 25);
+
+		telaCad.add(botaoSalvar).setBounds(25, 525, 75, 25);
+		telaCad.add(botaoCancelar).setBounds(450, 525, 90, 25);
+		// botaoSalvar();
+		// botaoCancelar();
 	}
 
-	static void cadastarNome(){
-		textoNome.setLocation(25, 45);
-		textoNome.setSize(150,10);
-		textoNome.setVisible(true);
-		textoNome.setLayout(null);
-		
-		escreverNome.setLocation(80, 40);
-		escreverNome.setSize(100,25);
-		escreverNome.setVisible(true);
-		
-	}
-
-	static void cadastarSobrenome(){
-		textoSobrenome.setLocation(225, 45);
-		textoSobrenome.setSize(200,10);
-		textoSobrenome.setVisible(true);
-		textoSobrenome.setLayout(null);
-		
-		escreverSobrenome.setLocation(310, 40);
-		escreverSobrenome.setSize(215,25);
-		escreverSobrenome.setVisible(true);
-	}
 }
