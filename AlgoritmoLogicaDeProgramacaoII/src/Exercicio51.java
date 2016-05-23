@@ -1,11 +1,9 @@
 import java.awt.Color;
-import java.awt.Font;
-import java.nio.channels.SelectableChannel;
-
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -16,7 +14,7 @@ public class Exercicio51 {
 	static JPanel tela = new JPanel();
 	static JPanel telaCad = new JPanel();
 
-	static JButton botao1 = new JButton("Cadastrar Cliente");
+	static JButton botCadastrar = new JButton("Cadastrar Cliente");
 	static JButton botao2 = new JButton("Atualizar Cliente");
 	static JButton botao3 = new JButton("Excluir Cliente");
 	static JButton botao4 = new JButton("Consultar cliente");
@@ -39,20 +37,19 @@ public class Exercicio51 {
 		janela.setVisible(true);
 		janela.add(tela);
 		tela();
-
+		acaoBotao();
 	}
 
 	static void tela() {
 		tela.setBackground(Color.lightGray);
 		tela.setLayout(null);
-		tela.add(botao1).setBounds(150, 15, 170, 50);
-		botao1.setBackground(Color.white);
+		tela.add(botCadastrar).setBounds(150, 15, 170, 50);
+		botCadastrar.setBackground(Color.white);
 		tela.add(botao2).setBounds(150, 100, 170, 50);
 		botao2.setBackground(Color.white);
 		tela.add(botao3).setBounds(150, 200, 170, 50);
 		botao3.setBackground(Color.white);
 		tela.add(botao4).setBounds(150, 300, 170, 50);
-
 		botao4.setBackground(Color.white);
 
 	}
@@ -67,6 +64,7 @@ public class Exercicio51 {
 		jCadastro.setVisible(true);
 		jCadastro.add(telaCad);
 		telaCadastro();
+		acaoBotao();
 	}
 
 	static void telaCadastro() {
@@ -92,20 +90,20 @@ public class Exercicio51 {
 		telaCad.setLayout(null);
 
 		// dados pessoais
-		telaCad.add(textoNome).setBounds(25, 25, 150, 10);
-		telaCad.add(escreverNome).setBounds(25, 40, 100, 25);
-		telaCad.add(textoSobrenome).setBounds(190, 25, 200, 10);
-		telaCad.add(escreverSobrenome).setBounds(190, 40, 215, 25);
-		telaCad.add(textCpf).setBounds(25, 80, 50, 10);
-		telaCad.add(escreverCpf).setBounds(25, 95, 115, 25);
-		telaCad.add(textRg).setBounds(190, 80, 50, 10);
-		telaCad.add(escreverRg).setBounds(190, 95, 115, 25);
-		telaCad.add(textDataNasc).setBounds(350, 80, 250, 10);
+		telaCad.add(textoNome).setBounds(25, 35, 150, 10);
+		telaCad.add(escreverNome).setBounds(25, 50, 100, 25);
+		telaCad.add(textoSobrenome).setBounds(190, 35, 200, 10);
+		telaCad.add(escreverSobrenome).setBounds(190, 50, 215, 25);
+		telaCad.add(textCpf).setBounds(25, 90, 50, 10);
+		telaCad.add(escreverCpf).setBounds(25, 105, 115, 25);
+		telaCad.add(textRg).setBounds(190, 90, 50, 10);
+		telaCad.add(escreverRg).setBounds(190, 105, 115, 25);
+		telaCad.add(textDataNasc).setBounds(350, 90, 250, 10);
 
 		// dados contato
 		telaCad.add(escreverDataNasc).setBounds(350, 95, 115, 25);
 		telaCad.add(textEmail).setBounds(25, 190, 50, 10);
-		telaCad.add(escreverEmail).setBounds(25, 205, 190, 25);
+		telaCad.add(escreverEmail).setBounds(25, 205, 290, 25);
 		telaCad.add(texTelefone).setBounds(25, 140, 100, 10);
 		telaCad.add(escreverTelefone).setBounds(25, 155, 115, 25);
 		telaCad.add(textCelular).setBounds(350, 140, 150, 10);
@@ -113,8 +111,32 @@ public class Exercicio51 {
 
 		telaCad.add(botaoSalvar).setBounds(25, 525, 75, 25);
 		telaCad.add(botaoCancelar).setBounds(450, 525, 90, 25);
-		// botaoSalvar();
-		// botaoCancelar();
+		
+
+	}
+
+	static void acaoBotao() {
+		botCadastrar.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				janela.setVisible(false);
+				janelaCadastro();
+				
+			}
+		});
+	botaoCancelar.addActionListener(new ActionListener() {
+		
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			jCadastro.setVisible(false);
+			janela();
+			
+			
+		}
+	});
 	}
 
 }
